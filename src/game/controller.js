@@ -1,5 +1,5 @@
-import Game from "./framework";
-import '../dist/style.css';
+import Game from "./game";
+import '/dist/style.css';
 
 
 function startControl() {

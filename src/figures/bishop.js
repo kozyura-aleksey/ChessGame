@@ -1,6 +1,6 @@
-import Figure from "./figure"
-import srcb from '../img/bB.png';
-import srcw from '../img/bW.png';
+import Figure from "../figures/figure.js"
+import srcb from "../img/bB.png";
+import srcw from "../img/bW.png";
 
 
 export default class Bishop extends Figure {

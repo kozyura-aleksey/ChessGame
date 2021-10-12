@@ -30,7 +30,7 @@ module.exports = {
         ]
     },
     mode: 'development',
-    entry: './src/controller.js',
+    entry: './src/game/controller.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')

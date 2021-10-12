@@ -1,9 +1,9 @@
-import Bishop from './bishop'
-import King from './king'
-import Knight from './knight.js'
-import Pawn from './pawn'
-import Queen from './queen'
-import Rook from './rook'
+import Bishop from '../figures/bishop.js'
+import King from '../figures/king.js'
+import Knight from '../figures/knight.js'
+import Pawn from '../figures/pawn.js'
+import Queen from '../figures/queen.js'
+import Rook from '../figures/rook.js'
 
 export default class workWithDOM {
 
@@ -39,7 +39,9 @@ export default class workWithDOM {
                         img.id = pawnB.getName() + i + j
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", pawnB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'rB':
@@ -49,7 +51,9 @@ export default class workWithDOM {
                         img.id = rookB.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", rookB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'kB':
@@ -59,7 +63,9 @@ export default class workWithDOM {
                         img.id = knightB.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", knightB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'bB':
@@ -69,7 +75,9 @@ export default class workWithDOM {
                         img.id = bishopB.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", bishopB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'qB':
@@ -79,7 +87,9 @@ export default class workWithDOM {
                         img.id = queenB.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", queenB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'kingB':
@@ -89,7 +99,9 @@ export default class workWithDOM {
                         img.id = kingB.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", kingB.getName());
                         img.className = "Black";
+                        td.setAttribute("color", "Black");
                         td.id = array[i][j].mark;
                         break;
                     case 'pW':
@@ -99,7 +111,9 @@ export default class workWithDOM {
                         img.id = pawnW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", pawnW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 'rW':
@@ -109,7 +123,9 @@ export default class workWithDOM {
                         img.id = rookW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", rookW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 'kW':
@@ -119,7 +135,9 @@ export default class workWithDOM {
                         img.id = knightW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", knightW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 'bW':
@@ -129,7 +147,9 @@ export default class workWithDOM {
                         img.id = bishopW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", bishopW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 'qW':
@@ -139,7 +159,9 @@ export default class workWithDOM {
                         img.id = queenW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", queenW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 'kingW':
@@ -149,13 +171,17 @@ export default class workWithDOM {
                         img.id = kingW.getName() + i + j;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", kingW.getName());
                         img.className = "White";
+                        td.setAttribute("color", "White");
                         td.id = array[i][j].mark;
                         break;
                     case 0:
                         td.id = array[i][j].mark;
                         td.setAttribute("data-x", i);
                         td.setAttribute("data-y", j);
+                        td.setAttribute("figure", "");
+                        td.setAttribute("color", "");
                         break;
                 }
                 m++;
@@ -177,12 +203,16 @@ export default class workWithDOM {
             var drag = function (event) {
                 event.dataTransfer.setData('id', event.target.id);
                 event.dataTransfer.setData('className', event.target.className);
+                event.dataTransfer.setData('color', event.currentTarget.getAttribute('color'));
+                event.dataTransfer.setData('figure', event.currentTarget.getAttribute('figure'));
             }
 
             var drop = function (event) {
                 let idOld = event.target.id;
                 let elementOld = document.getElementById(idOld);
                 let itemId = event.dataTransfer.getData('id');
+                let color = event.dataTransfer.getData('color');
+                let figure = event.dataTransfer.getData('figure');
                 let newElement = document.getElementById(itemId);
                 let itemClassName = event.dataTransfer.getData('className');
 
@@ -190,6 +220,8 @@ export default class workWithDOM {
                     if (event.target.className == 'Black') {
                     } else {
                         event.target.append(document.getElementById(itemId));
+                        event.target.setAttribute("color", color);
+                        event.target.setAttribute("figure", figure);
                     }
                     if (event.target.className == 'White') {
                         alert("Съел");
@@ -219,94 +251,101 @@ export default class workWithDOM {
         }
     }
 
-    insideChessBoard(array, x, y) {
-        for (let i = 0; i < array.length; i++) {
-            for (let j = 0; j < array.length; j++) {
-                if ((x) || (x) || (y) || (y)) {
-                    return false;
-                } else
-                    return true;
-            }
-        }
-    }
-
     showMoves() {
         let element = document.getElementsByTagName('table')[0];
         const tdElements = element.getElementsByTagName('td');
         for (let td of tdElements) {
-            const imgElements = td.getElementsByTagName('img');
-            for (let img of imgElements) {
-                switch (img.id) {
-                    case 'Pawn10':
-                        td.onmouseover = () => {
-                            let x = td.dataset.x+2;
-                            let y = td.dataset.y+2;
-                            const tdMove = document.querySelectorAll('td[data-x={x}], td[data-y="y"]');
-                            for (let tdM of tdMove) {
-                                tdM.style.backgroundColor = "yellow";
-                            }
+            td.onmouseover = () => {
+                switch (td.getAttribute('Figure')) {
+                    case 'Pawn':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                const xPB = Number(td.dataset.x);
+                                const yPB = Number(td.dataset.y);
+                                const tdMovePB = document.querySelectorAll(`td[data-y="${yPB}"][data-x="${xPB + 1}"], td[data-y="${yPB}"][data-x="${xPB + 2}"]`);
+                                tdMovePB.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                            case 'White':
+                                const xPW = Number(td.dataset.x);
+                                const yPW = Number(td.dataset.y);
+                                const tdMovePW = document.querySelectorAll(`td[data-y="${yPW}"][data-x="${xPW - 1}"], td[data-y="${yPW}"][data-x="${xPW - 2}"]`);
+                                tdMovePW.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
                         }
-                    case 'Pawn11':
-                    case 'Pawn12':
-                    case 'Pawn13':
-                    case 'Pawn14':
-                    case 'Pawn15':
-                    case 'Pawn16':
-                    case 'Pawn17':
-
                         break;
-                    case 'Rook00':
-                    case 'Rook07':
-
+                    case 'Rook':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                const xRB = Number(td.dataset.x);
+                                const yRB = Number(td.dataset.y);
+                                const tdMoveRB = document.querySelectorAll(`td[data-y="${yRB}"], td[data-x="${xRB}"] `);
+                                tdMoveRB.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                            case 'White':
+                                const xRW = Number(td.dataset.x);
+                                const yRW = Number(td.dataset.y);
+                                const tdMoveRW = document.querySelectorAll(`td[data-y="${yRW}"], td[data-x="${xRW}"] `);
+                                tdMoveRW.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                        }
                         break;
-                    case 'Knight01':
-                    case 'Knight06':
-
+                    case 'Knight':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                const xKB = Number(td.dataset.x);
+                                const yKB = Number(td.dataset.y);
+                                const tdMoveKB = document.querySelectorAll(`td[data-y="${yKB - 1}"][data-x="${xKB + 2}"], td[data-y="${yKB + 1}"][data-x="${xKB + 2}"]`);
+                                tdMoveKB.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                            case 'White':
+                                const xKW = Number(td.dataset.x);
+                                const yKW = Number(td.dataset.y);
+                                const tdMoveKW = document.querySelectorAll(`td[data-y="${yKW + 1}"][data-x="${xKW - 2}"], td[data-y="${yKW - 1}"][data-x="${xKW - 2}"]`);
+                                tdMoveKW.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                        }
                         break;
-                    case 'Bishop02':
-                    case 'Bishop05':
-
+                    case 'Bishop':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                const xBB = Number(td.dataset.x);
+                                const yBB = Number(td.dataset.y);
+                                const tdMoveBB = document.querySelectorAll(`td[data-y="${yBB - 1}"][data-x="${xBB + 1}"], td[data-y="${yBB + 1}"][data-x="${xBB + 1}"], td[data-y="${yBB + 2}"][data-x="${xBB + 2}"], td[data-y="${yBB - 2}"][data-x="${xBB + 2}"], td[data-y="${yBB + 3}"][data-x="${xBB + 3}"], td[data-y="${yBB - 3}"][data-x="${xBB + 3}"], td[data-y="${yBB + 4}"][data-x="${xBB + 4}"], td[data-y="${yBB - 4}"][data-x="${xBB + 4}"], td[data-y="${yBB + 5}"][data-x="${xBB + 5}"], td[data-y="${yBB - 5}"][data-x="${xBB + 5}"]`);
+                                tdMoveBB.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                            case 'White':
+                                const xBW = Number(td.dataset.x);
+                                const yBW = Number(td.dataset.y);
+                                const tdMoveBW = document.querySelectorAll(`td[data-y="${yBW + 1}"][data-x="${xBW - 1}"], td[data-y="${yBW - 1}"][data-x="${xBW - 1}"], td[data-y="${yBW - 2}"][data-x="${xBW - 2}"], td[data-y="${yBW + 2}"][data-x="${xBW - 2}"], td[data-y="${yBW - 3}"][data-x="${xBW - 3}"], td[data-y="${yBW + 3}"][data-x="${xBW - 3}"], td[data-y="${yBW - 4}"][data-x="${xBW - 4}"], td[data-y="${yBW + 4}"][data-x="${xBW - 4}"], td[data-y="${yBW - 5}"][data-x="${xBW - 5}"], td[data-y="${yBW + 5}"][data-x="${xBW - 5}"]`);
+                                tdMoveBW.forEach((td) => { td.style.backgroundColor = "yellow"; });
+                                break;
+                        }
                         break;
-                    case 'Quenn03':
-
+                    case 'Quenn':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                break;
+                            case 'White':
+                                break;
+                        }
                         break;
-                    case 'King04':
-
-                        break;
-                    case 'Pawn60':
-                    case 'Pawn61':
-                    case 'Pawn62':
-                    case 'Pawn63':
-                    case 'Pawn64':
-                    case 'Pawn65':
-                    case 'Pawn66':
-                    case 'Pawn67':
-
-                        break;
-                    case 'rW':
-
-                        break;
-                    case 'kW':
-
-                        break;
-                    case 'bW':
-
-                        break;
-                    case 'qW':
-
-                        break;
-                    case 'kingW':
-
+                    case 'King':
+                        switch (td.getAttribute('color')) {
+                            case 'Black':
+                                break;
+                            case 'White':
+                                break;
+                        }
                         break;
                     case 0:
-
                         break;
+                }
+                td.onmouseout = () => {
+                    Array.prototype.forEach.call(tdElements, (td) => td.style.backgroundColor = "");
                 }
             }
         }
     }
-
-
 
     deleteElement(name, place) {
         let element = document.createElement(name);

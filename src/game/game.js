@@ -1,4 +1,4 @@
-import workWithDOM from "./dom";
+import workWithDOM from "../game/dom";
 
 var chessBoardFiguresArray = [
     [{ figure: "rB", mark: "A8" }, { figure: "kB", mark: "B8" }, { figure: "bB", mark: "C8" }, { figure: "qB", mark: "D8" }, { figure: "kingB", mark: "E8" }, { figure: "bB", mark: "F8" }, { figure: "kB", mark: "G8" }, { figure: "rB", mark: "H8" }],
@@ -22,10 +22,6 @@ export default class Game {
         dom.createTableFromArray(chessBoardFiguresArray);
         dom.addDragAndDropOnTable();
         dom.showMoves();
-    }
-
-    reDraw() {
-
     }
 }
 

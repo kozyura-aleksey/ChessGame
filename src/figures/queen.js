@@ -1,5 +1,5 @@
-import Figure from "./figure"
-import srcb from "../img/qB.png";
+import Figure from "../figures/figure.js"
+import srcb from "../img/qB.png"
 import srcw from "../img/qW.png";
 
 export default class Queen extends Figure {

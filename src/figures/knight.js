@@ -1,4 +1,4 @@
-import Figure from "./figure"
+import Figure from "../figures/figure.js"
 import srcb from "../img/kB.png";
 import srcw from "../img/kW.png";
 
